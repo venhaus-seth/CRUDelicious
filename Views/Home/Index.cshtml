@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@await Html.PartialAsync("_Navbar")
+<div class="text-center">
+
+    <div class="m-4">
+        <h1>Welcome to CRUDelicious</h1>
+    </div>
+
+    <div class="m-4">
+        <a asp-action="">Home</a>
+        <a asp-action="NewDish">Add a Dish</a>
+    </div>
+
+    <div>
+        <h3>Check out these dishes!</h3>
+        <div class="d-flex justify-content-center flex-column">
+            @foreach(Dish n in ViewBag.AllDishes)
+            {
+                <a asp-action="ShowDish" asp-route-DishId="@n.DishId" asp-controller="Home" class="m-1">@n.Name</a>
+            }
+        </div>
+    </div>
+
+</div>
